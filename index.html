@@ -17,17 +17,36 @@
 <body>
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
     <a-marker preset="hiro">
-      <!-- Tambahkan sound component di sini -->
+      <!-- SOUND -->
       <a-sound src="naruto_alive.mp3" autoplay="true" loop="true"></a-sound>
-      
+      <!-- OBJECT PERTAMA -->
       <a-entity 
         gltf-model="attack/scene.gltf"
+        position="-2 0.5 0"
+        scale="0.5 0.5 0.5"
+        rotation="0 0 0"
+        animation-mixer="loop: repeat;"
+        gesture-handler>
+      </a-entity>
+      <!-- OBJECT KEDUA -->
+      <a-entity 
+        gltf-model="character/scene.gltf"
         position="0 0.5 0"
         scale="0.5 0.5 0.5"
         rotation="0 0 0"
-        animation-mixer="loop: repeat; crossFadeDuration: 1"
+        animation-mixer="loop: repeat;"
         gesture-handler>
       </a-entity>
+      <!-- OBJECT KETIGA-->
+      <a-entity 
+        gltf-model="attack/scene.gltf"
+        position="2 0.5 0"
+        scale="0.5 0.5 0.5"
+        rotation="0 0 0"
+        animation-mixer="loop: repeat;"
+        gesture-handler>
+      </a-entity>
+      
       
     </a-marker>
     <a-entity camera></a-entity>
