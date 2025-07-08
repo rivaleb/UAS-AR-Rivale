@@ -3,106 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AR.js - Maskot Ganti Animasi</title>
-
-  <!-- A-Frame + AR.js + GLTF Loader -->
+  <title>UAS.Ar - Rivale Belano - 23201253/R</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  <!-- Ganti aframe-extras.loaders.min.js dengan aframe-extras.min.js agar animation-mixer jalan -->
   <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
   <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-
   <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    /* Tombol 2 baris × 3 kolom */
-    #button-container {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 999;
-      display: grid;
-      grid-template-columns: repeat(3, auto); /* Selalu 3 kolom */
-      gap: 10px;
-      justify-content: center;
-    }
-
-    #button-container button {
-      padding: 12px 20px;
-      font-size: 14px;
-      min-width: 100px;
-      border: none;
-      border-radius: 8px;
-      background-color: #007BFF;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    #button-container button:hover {
-      background-color: #0056b3;
-    }
+    body { margin: 0; overflow: hidden; }
   </style>
 </head>
-
 <body>
-  <!-- Tombol -->
-  <div id="button-container">
-    <button id="btn0">Normal</button>
-    <button id="btn1">Jalan</button>
-    <button id="btn2">Lari</button>
-    <button id="btn3">Sprint</button>
-    <button id="btn4">Tinju</button>
-    <button id="btn5">Joget</button>
-  </div>
-
-  <!-- Scene AR -->
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <a-marker preset="hiro" gesture-detector>
+    <a-marker preset="hiro">
+      <!-- Tambahkan sound component di sini -->
+      <a-sound src="naruto_alive.mp3" autoplay="true" loop="true"></a-sound>
+      <script>
+var marker = document.querySelector('#hiro-marker');
+var sound = document.querySelector('#naruto_alive');
+marker.addEventListener('markerFound', function() {
+    sound.components.sound.playSound();
+});
+marker.addEventListener('markerLost', function() {
+    sound.components.sound.stopSound();
+});
+</script>
+      
       <a-entity 
-        id="maskot"
-        gltf-model="maskot_asia.glb"
-        position="0 0 0"
-        scale="1 1 1"
-        animation-mixer="clip: Walking; loop: repeat; timeScale: 1"
+        gltf-model="attack/scene.glb"
+        position="0 0.5 0"
+        scale="0.5 0.5 0.5"
+        rotation="0 0 0"
+        animation-mixer="loop: repeat; crossFadeDuration: 1"
         gesture-handler>
       </a-entity>
     </a-marker>
-
     <a-entity camera></a-entity>
   </a-scene>
-
-  <!-- Script Ganti Animasi -->
-  <script>
-    const maskot = document.querySelector('#maskot');
-
-    document.querySelector('#btn0').addEventListener('click', () => {
-      maskot.setAttribute('animation-mixer', 'clip: Agree_Gesture; loop: repeat; timeScale: 1');
-    });
-
-    document.querySelector('#btn1').addEventListener('click', () => {
-      maskot.setAttribute('animation-mixer', 'clip: Walking; loop: repeat; timeScale: 1');
-    });
-
-    document.querySelector('#btn2').addEventListener('click', () => {
-      maskot.setAttribute('animation-mixer', 'clip: Running; loop: repeat; timeScale: 1');
-    });
-
-    document.querySelector('#btn3').addEventListener('click', () => {
-      maskot.setAttribute('animation-mixer', 'clip: RunFast; loop: repeat; timeScale: 1');
-    });
-
-    document.querySelector('#btn4').addEventListener('click', () => {
-      maskot.setAttribute('animation-mixer', 'clip: Boxing_Practice; loop: repeat; timeScale: 1');
-    });
-
-    document.querySelector('#btn5').addEventListener('click', () => {
-      maskot.setAttribute('animation-mixer', 'clip: You_Groove; loop: repeat; timeScale: 1');
-    });
-  </script>
 </body>
 </html>
