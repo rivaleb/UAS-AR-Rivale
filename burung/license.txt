@@ -1,0 +1,11 @@
+Model Information:
+* title:	Puck_Dota2
+* source:	https://sketchfab.com/3d-models/puck-dota2-c790000e506f4c17814c501a98f1aa98
+* author:	phongtruong1697 (https://sketchfab.com/phongtruong1697)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Puck_Dota2" (https://sketchfab.com/3d-models/puck-dota2-c790000e506f4c17814c501a98f1aa98) by phongtruong1697 (https://sketchfab.com/phongtruong1697) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
